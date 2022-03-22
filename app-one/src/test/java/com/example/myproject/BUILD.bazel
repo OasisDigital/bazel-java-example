@@ -1,0 +1,19 @@
+java_test(
+    name = "pass",
+    timeout = "short",
+    srcs = glob(["*.java"]),
+    test_class = "com.example.myproject.TestHello",
+    deps = [
+        "//app-one/src/main/java/com/example/myproject:hello-lib",
+        "@maven//:junit_junit",
+    ],
+)
+
+# If you have a lot of dependencies, they can be groups into a library.
+
+java_library(
+    name = "java_test_deps",
+    exports = [
+        "@maven//:junit_junit",
+    ],
+)

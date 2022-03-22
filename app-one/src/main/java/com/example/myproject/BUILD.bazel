@@ -1,0 +1,24 @@
+package(default_visibility = ["//visibility:public"])
+
+java_binary(
+    name = "hello-world",
+    srcs = ["Greeter.java"],
+    main_class = "com.example.myproject.Greeter",
+    # required because the code imports com.google.devtools.build.runfiles.Runfiles:
+    deps = ["@bazel_tools//tools/java/runfiles"],
+)
+
+java_binary(
+    name = "hello-data",
+    main_class = "com.example.myproject.Greeter",
+    runtime_deps = [":hello-lib"],
+)
+
+java_library(
+    name = "hello-lib",
+    srcs = ["Greeter.java"],
+    # Data this program will want to access:
+    data = ["//app-one/src/main/resources:greeting"],
+    # Code this program will require to compile:
+    deps = ["@bazel_tools//tools/java/runfiles"],
+)

@@ -1,0 +1,23 @@
+package(default_visibility = ["//visibility:public"])
+
+java_library(
+    name = "time-server-lib",
+    # Non-recommended use of a glob
+    srcs = glob(["src/main/java/**/*.java"]),
+    deps = ["@maven//:com_sparkjava_spark_core"],
+)
+
+java_binary(
+    name = "time-server",
+    main_class = "com.oasisdigital.myproject.Server",
+    runtime_deps = [":time-server-lib"],
+)
+
+# load("@bazel_common//tools/maven:pom_file.bzl", "pom_file")
+# pom_file(
+#     name = "my_library_pom",
+#     targets = [
+#         ":time-server",
+#     ],
+#     template_file = "pom_template.xml",
+# )
