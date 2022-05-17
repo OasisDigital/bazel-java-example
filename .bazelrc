@@ -8,3 +8,6 @@ fetch --disk_cache=~/.cache/bazel-disk
 query --disk_cache=~/.cache/bazel-disk
 sync --disk_cache=~/.cache/bazel-disk
 test --disk_cache=~/.cache/bazel-disk
+
+# For production use, consider Aspect's advice on many settings:
+# https://blog.aspect.dev/bazelrc-flags
